@@ -1,0 +1,9 @@
+#content h1{
+	font-size: 20px;
+	color: navy;
+}
+
+#content code{
+	font-family: monospace;
+	font-size: 16px;
+}
