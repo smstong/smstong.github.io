@@ -1,9 +1,17 @@
+#content {
+	font-family: "Monospace";
+}
 #content h1{
 	font-size: 20px;
 	color: navy;
 }
 
+#content pre {
+	padding: 10px;
+	background-color: black;
+	color: white;
+}
 #content code{
-	font-family: monospace;
+	font-family: courier;
 	font-size: 16px;
 }
