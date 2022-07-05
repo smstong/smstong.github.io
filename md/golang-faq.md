@@ -2,7 +2,7 @@
 # How to statically build go code?
 
 ```bash
-CGO_ENABLED=1 go build hello.go
+CGO_ENABLED=0 go build hello.go
 ```
 
 # How to print a value's data type?
