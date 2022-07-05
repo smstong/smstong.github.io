@@ -1,1 +1,3 @@
-# smstong.github.io
+# faq.linuxexam.net
+FAQ for bash, python, golang, ....
+All articles are written in MARKDOWN, and browser end JAVASCRIPT renders them into html at runtime.
