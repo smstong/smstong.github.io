@@ -31,5 +31,5 @@ function loadDoc(filename) {
 
 window.onload = function() {
 	init();
-	loadDoc("bash-faq.md");
+	loadDoc("md/bash-faq.md");
 }
