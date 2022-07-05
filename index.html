@@ -2,11 +2,20 @@
 <html>
 	<head>
 		<title>FAQ for Linux</title>
-		<link href="css/index.css" rel="stylesheet" type="text/css">
+		<!-- highlight.js -->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+		<!-- marked.js -->
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<!-- our own js/css -->
+		<link rel="stylesheet" href="css/index.css" type="text/css">
 		<script src="js/index.js"></script>
 	</head>
 	<body>
+		<button onclick="loadDoc('md/bash-faq.md');">BASH</button>
+		<button onclick="loadDoc('md/python-faq.md');">PYTHON</button>
+		<button onclick="loadDoc('md/golang-faq.md');">GOLANG</button>
+		<!-- container of markdown rendering -->
 		<div id="content"></div>
 	</body>
 </html>
