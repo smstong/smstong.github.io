@@ -36,3 +36,11 @@ openssl pkcs12 -nodes -nocerts -password pass:pass123 \
 cat example.key example.crt | \
 openssl pkcs12 -export -out example.p12 -password pass:pass123
 ```
+
+# How to verify if a Private Key matches a Certificate?
+
+```bash
+# below two outputs are the same if matching.
+openssl x509 -noout -modulus -in mycert.crt | openssl md5
+openssl rsa  -noout -modulus -in mykey.key  | openssl md5
+```
