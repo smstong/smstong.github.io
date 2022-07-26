@@ -2,7 +2,7 @@
 # Client side
 ## How to enable rsa keytype?
 ```bash
-ssh -o PubkeyAcceptedKeyTypes +ssh-rsa username@server
+ssh -o PubkeyAcceptedKeyTypes=+ssh-rsa username@server
 ```
 
 ## How to check key type?
