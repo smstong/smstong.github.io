@@ -44,3 +44,8 @@ openssl pkcs12 -export -out example.p12 -password pass:pass123
 openssl x509 -noout -modulus -in mycert.crt | openssl md5
 openssl rsa  -noout -modulus -in mykey.key  | openssl md5
 ```
+
+# How to check the SSL/TLS cert of a website?
+```bash
+echo q | openssl s_client -connect google.ca:443 | sed -ne '/BEGIN/,/END/p' | openssl x509 -noout -text | less
+```
