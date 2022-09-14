@@ -11,5 +11,15 @@ the entities will be found in namespace std and perhaps in the global namespace.
 
 ```cpp
 #include <stdio.h>
+int main()
+{
+    printf("Hello world!\n");
+}
+```
+```cpp
 #include <cstdio>
+int main()
+{
+    std::printf("Hello world!\n");
+}
 ```
