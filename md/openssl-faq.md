@@ -37,6 +37,13 @@ cat example.key example.crt | \
 openssl pkcs12 -export -out example.p12 -password pass:pass123
 ```
 
+# How to create a pkcs12 keystore from a private key, cert and cert chain?
+The cert chain must be in order that the cert comes first and root CA comes last.
+```bash
+cat example.key example.crt intermediateCA.crt RootCA.crt | \
+openssl pkcs12 -export -out example.p12 -password pass:pass123
+```
+
 # How to verify if a Private Key matches a Certificate?
 
 ```bash
