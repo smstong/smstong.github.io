@@ -15,13 +15,13 @@ openssl pkcs12 -info -nodes -password pass:pass123 \
 
 # How to list certs only in a pkcs12 keystore?
 ```bash
-openssl pkcs12 -nodes -nocerts -password pass:pass123 \
+openssl pkcs12 -nodes -nokeys -password pass:pass123 \
         -in example.p12
 ```
 
 # How to list private keys only in a pkcs12 keystore?
 ```bash
-openssl pkcs12 -nodes -nokeys -password pass:pass123 \
+openssl pkcs12 -nodes -nocerts -password pass:pass123 \
         -in example.p12
 ```
 
