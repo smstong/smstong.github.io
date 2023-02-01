@@ -7,6 +7,13 @@ openssl req -x509 -newkey rsa:4096 -sha256 -days 365 \
         -keyout example.key -out example.crt
 ```
 
+# How to generate a CSR (certificate Signing Request) and a password-less key at the same time?
+```bash
+openssl req -nodes -newkey rsa:2048 \ 
+        -subj '/C=CA/ST=Ontario/O=example/CN=example.com' \
+        -keyout example.key -out example.csr
+```
+
 # How to list keys/certs in PKCS12 keystore?
 ```bash
 openssl pkcs12 -info -nodes -password pass:pass123 \
