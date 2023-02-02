@@ -45,3 +45,8 @@ selfDir=$(dirname $selfPath)
 echo ${selfPath}
 echo ${selfDir}
 ```
+
+# How to convert HEX letter format data to binary bytes, then encode with base64?
+```bash
+echo "12ABCDEF" | xxd -r -p | base64 
+```
