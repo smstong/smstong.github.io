@@ -2,7 +2,7 @@
 
 # How to generate a self-signed certificate?
 ```bash
-openssl req -x509 -newkey rsa:4096 -sha256 -days 365 \
+openssl req -x509 -newkey rsa:4096 -nodes -sha256 -days 365 \
         -subj '/C=CA/ST=Ontario/O=example/CN=example.com' \
         -keyout example.key -out example.crt
 ```
