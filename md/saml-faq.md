@@ -13,3 +13,14 @@ Shibboleth IdP selects NameID generation based on the [process](https://shibbole
 In most cases, it is better to control the Format selected by including a <NameIDFormat> element in the SP's metadata. 
 ```
 [Shib](https://shibboleth.atlassian.net/wiki/spaces/IDP4/pages/1265631686/ProfileConfiguration-SAML2SSO)
+
+# How to enable Duo 2FA for Shibboleth IdP v4.3 with JDK 17
+
+```
+bin/plugin.sh -I net.shibboleth.idp.plugin.nashorn     # Nashorn JS engine for scripted MFA auth flow
+bin/plugin.sh -I net.shibboleth.oidc.common            # OIDC base
+bin/plugin.sh -I net.shibboleth.idp.plugin.authn.duo.nimbus # DuoOIDC plugin shib version
+
+```
+[DuoOIDC Plugin](https://shibboleth.atlassian.net/wiki/spaces/IDPPLUGINS/pages/1374027959/DuoOIDCAuthnConfiguration)
+[Shib AUthn flow selection](https://shibboleth.atlassian.net/wiki/spaces/IDP4/pages/1265631603/AuthenticationFlowSelection)
