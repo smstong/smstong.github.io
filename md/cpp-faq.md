@@ -27,7 +27,7 @@ int main()
 ## uniform intialization
 From C++ 11, variables of any data types share a unified form of initalization.
 
-    *datatype* *variableName*{value,...}
+*datatype* *variableName*{value,...}
 
 ```cpp
     int x{2};
