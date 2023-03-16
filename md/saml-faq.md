@@ -24,3 +24,7 @@ bin/plugin.sh -I net.shibboleth.idp.plugin.authn.duo.nimbus # DuoOIDC plugin shi
 ```
 [DuoOIDC Plugin](https://shibboleth.atlassian.net/wiki/spaces/IDPPLUGINS/pages/1374027959/DuoOIDCAuthnConfiguration)
 [Shib AUthn flow selection](https://shibboleth.atlassian.net/wiki/spaces/IDP4/pages/1265631603/AuthenticationFlowSelection)
+
+# What're the common causes of SAML auth failure?
+- SP's clock is not synced with IdP
+- SP's ACS url and httpd method are not configured properly
