@@ -15,14 +15,19 @@ function init(){
 	  smartypants: false,
 	  xhtml: false
 	});
+	
+	const docBtns = document.querySelectorAll(".DocBtn");
+	docBtns.forEach((btn)=>{
+		const docFile = `md/${btn.id}-faq.md`;
+		window.location.search = `?doc=${docFile}`;
+	});
 }
-// load remote file
-function loadDoc(filename) {
+// load remote file to element docE
+function loadDoc(filename, docE) {
 
 	const xhttp = new XMLHttpRequest();
 	xhttp.onload = function() {
-		document.getElementById('content').innerHTML =
-			marked.parse(this.responseText);
+		docE.innerHTML = marked.parse(this.responseText);
 	}
 	xhttp.open("GET", filename, true);
 	xhttp.send();
@@ -31,5 +36,11 @@ function loadDoc(filename) {
 
 window.onload = function() {
 	init();
-	loadDoc("md/bash-faq.md");
+	var docName = "md/bash-faq.md"; // default doc
+	const docE = document.querySelector("#content");
+	const urlParams = new URLSearchParams(window.location.search);
+	if(urlParams.has('doc')){
+		docName = urlParams.get('doc');
+	}
+	loadDoc(docName, docE);
 }

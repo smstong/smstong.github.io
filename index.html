@@ -14,14 +14,15 @@
 	<body>
 		<a href="https://www.linuxexam.net">HOME</a>
 		<a href="https://github.com/smstong/smstong.github.io/tree/main/md">EDIT</a>
-		<button onclick="loadDoc('md/bash-faq.md');">BASH</button>
-		<button onclick="loadDoc('md/python-faq.md');">PYTHON</button>
-		<button onclick="loadDoc('md/golang-faq.md');">GOLANG</button>
-		<button onclick="loadDoc('md/openssl-faq.md');">OpenSSL</button>
-		<button onclick="loadDoc('md/openssh-faq.md');">OpenSSH</button>
-		<button onclick="loadDoc('md/git-faq.md');">GIT</button>
-		<button onclick="loadDoc('md/cpp-faq.md');">C++</button>
-		<button onclick="loadDoc('md/saml-faq.md');">SAML</button>
+		<button class="DocBtn" id="bash">BASH</button>
+		<button class="DocBtn" id="python">PYTHON</button>
+		<button class="DocBtn" id="golang">GOLANG</button>
+		<button class="DocBtn" id="openssl">OpenSSL</button>
+		<button class="DocBtn" id="openssh">OpenSSH</button>
+		<button class="DocBtn" id="git">GIT</button>
+		<button class="DocBtn" id="cpp">C++</button>
+		<button class="DocBtn" id="saml">SAML</button>
+		<button class="DocBtn" id="other">Other</button>
 		<!-- container of markdown rendering -->
 		<div id="content"></div>
 	</body>
