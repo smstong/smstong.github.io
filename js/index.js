@@ -18,7 +18,9 @@ function init(){
 	
 	const docBtns = document.querySelectorAll(".DocBtn");
 	docBtns.forEach((btn)=>{
-		window.location.search = `?doc=${btn.id}`;
+		btn.addEventListener("click", ()=>{
+			window.location.search = `?doc=${btn.id}`;
+		});
 	});
 }
 // load remote file to element docE
