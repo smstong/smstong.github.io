@@ -26,9 +26,12 @@ int main()
 # What're the most important features in C++11?
 ## uniform intialization
 From C++ 11, variables of any data types share a unified form of initalization.
+
+    *datatype* *variableName*{value,...}
+
 ```cpp
     int x{2};
-    string s("hello");
+    string s{"hello"};
     vector<int> v{5,8,4,6};
 ```
 ## "auto" keyword
