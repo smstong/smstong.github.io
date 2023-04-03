@@ -1,6 +1,12 @@
 
 **Docker FAQ**
 
+# How to let docker forcefully pull a image before running it?
+Option "--pull always" can help.
+
+```bash
+docker run --pull always docker.io/image_name:latest
+```
 # How to run multiple processes in a docker container?
 [Run multiple services in a container](https://docs.docker.com/config/containers/multi-service_container/)
 ## create a start script, my_wrapper_script.sh
