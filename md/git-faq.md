@@ -11,3 +11,8 @@ git reset --merge
 
 git reset --hard HEAD
 ```
+# How to let git client cache login and password?
+```bash
+git config --global credential.helper store
+```
+Then you login/password will be saved at ~/.git-credentials.
