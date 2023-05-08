@@ -28,3 +28,36 @@ bin/plugin.sh -I net.shibboleth.idp.plugin.authn.duo.nimbus # DuoOIDC plugin shi
 # What're the common causes of SAML auth failure?
 - SP's clock is not synced with IdP
 - SP's ACS url and httpd method are not configured properly
+
+# Error: "Profile Action ValidateAssertions: Assertion validation failure msg was: No subject confirmation methods were met for assertion with"
+
+This happends on SP side (or IdP side when the IdP works as a role of SP, like SAML proxying). 
+One possible reason is the user agent used different IP addresses to access IdP and SP. A common senario is that one of them is at the same local network with the user agent.
+e.g. 
+The IdP sees the user agent's IP as "192.168.0.145", which is a local address. While the SP sees the user agent's IP as another public IP.
+
+```xml
+ <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
+                   ID="_be692716c122ffbdaf16d0b38f8fc846"
+                   IssueInstant="2023-05-08T19:11:43.459Z"
+                   Version="2.0">
+    <saml2:Issuer>https://idp.linuxexam.net/idp/shibboleth</saml2:Issuer>
+    <saml2:Subject>
+      <saml2:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+                    xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">user01@linuxexam.net</saml2:NameID>
+      <saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <saml2:SubjectConfirmationData Address="192.168.0.145"
+                                       InResponseTo="_ce77cf69908133cc6c7f74e4fb8e2735"
+                                       NotOnOrAfter="2023-05-08T19:16:43.478Z"
+                                       Recipient="https://idpz.utorauth.utoronto.ca/idp/profile/Authn/SAML2/POST/SSO" /></saml2:SubjectConfirmation>
+```
+
+The solution is to disable IP address verification. For Shib IdP proxying, add p:checkAddress="false" to replying-party.xml.
+```
+<bean parent="SAML2.SSO"
+                    ...
+                    p:checkAddress="false"
+                    ...>
+</bean>
+
+```
