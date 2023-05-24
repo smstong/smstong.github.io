@@ -29,3 +29,16 @@ openssl s_client -showcerts -connect server.example.com:port
 ```
 LDAPTLS_CACERT=/path/to/your/ca/file.crt ldapsearch -H ldaps://server.com ...
 ```
+
+## Can I use key="this is a value" in Java properties file?
+```
+No.
+Both single quotes and double quotes are considered part of the value. So the value here is 
+
+"this is a value"
+
+rather than 
+
+this is a value.
+
+```
