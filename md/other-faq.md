@@ -21,6 +21,11 @@ curl -v telnet://server.example.com:port
 netcat -v serer.example.com port
 
 # TLS layer connection test, common issues include CA root certs are not installed on client side.
-openssl s_client -connect server.example.com:port
+openssl s_client -showcerts -connect server.example.com:port
 
+```
+
+## how to run ldap client with specific trust anchors?
+```
+LDAPTLS_CACERT=/path/to/your/ca/file.crt ldapsearch -H ldaps://server.com ...
 ```
