@@ -55,5 +55,5 @@ echo "12ABCDEF" | xxd -r -p | base64
 ```bash
 # this is an example to track /var/log/message and forward new logs into a kafka broker
 # see man pages for the difference between -f and -F.
-tail -F /var/log/message 2>/dev/null | kcat -b kafaka-server-ip:port -t logs
+tail -F /var/log/message  | kcat -b kafaka-server-ip:port -t logs
 ```
