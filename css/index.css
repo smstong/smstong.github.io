@@ -3,6 +3,7 @@ a{
 }
 #content {
 	font-family: "Monospace";
+	margin: 0 30px;
 }
 
 #content h1{
