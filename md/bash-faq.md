@@ -64,6 +64,6 @@ tail -F /var/log/message  | kcat -b kafaka-server-ip:port -t logs
 # the solution is to use bash array, more details at https://www.linuxexam.net/2023/07/how-bash-processes-command-args-with.html.
 
 $ CURL_OPTS=('-H' 'Content-Type: application/json' -H "Authorization: BASIC $(echo -n $USERNAME:$PASSWORD | base64)")
-$ curl "$CURL_OPTS" https://my.server.com/api/whatever
-$ curl "$CURL_OPTS" https://my.server.com/api/other
+$ curl "${CURL_OPTS[@]}" https://my.server.com/api/whatever
+$ curl "${CURL_OPTS[@]}" https://my.server.com/api/other
 ```
