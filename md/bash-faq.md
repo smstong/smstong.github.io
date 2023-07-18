@@ -57,3 +57,13 @@ echo "12ABCDEF" | xxd -r -p | base64
 # see man pages for the difference between -f and -F.
 tail -F /var/log/message  | kcat -b kafaka-server-ip:port -t logs
 ```
+
+# How to save mulitple command line arguments/options in a variable and reuse it?
+```bash
+# quotation marks in the value of a variable cannot protect argument-with-spaces.
+# the solution is to use bash array, more details at https://www.linuxexam.net/2023/07/how-bash-processes-command-args-with.html.
+
+$ CURL_OPTS=('-H' 'Content-Type: application/json' -H "Authorization: BASIC $(echo -n $USERNAME:$PASSWORD | base64)")
+$ curl "$CURL_OPTS" https://my.server.com/api/whatever
+$ curl "$CURL_OPTS" https://my.server.com/api/other
+```
