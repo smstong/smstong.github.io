@@ -10,7 +10,7 @@ CGO_ENABLED=0 go build hello.go
 var x int
 fmt.Printf("%T", x)
 ```
-# How to embed static files into go app and access a sub tree in it?
+# How to embed a folder of files into go app and access a sub tree in it?
 Let's assume the folder layout is:
   ./ui/index.html
   ./ui/index.css
