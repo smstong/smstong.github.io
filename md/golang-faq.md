@@ -35,3 +35,38 @@ http.Handle("/", http.FS(sub))
 
 
 ```
+
+# How to detect HTTP disconnection from http.Hanlder?
+```go
+http.HandleFunc("/sse", func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("%s", r.RequestURI)
+		w.Header().Set("Content-Type", "text/event-stream")
+		w.Header().Set("Cache-Control", "no-store")
+		w.Header().Set("Connection", "keep-alive")
+
+		msgChan := make(chan string, 10)
+		users.Store(r, msgChan)
+		defer func() {
+			users.Delete(r)
+			log.Printf("user %s left", r.RemoteAddr)
+		}()
+
+		ticker := time.NewTicker(time.Second)
+		defer ticker.Stop()
+
+		for {
+			select {
+			case <-ticker.C:
+				fmt.Fprintf(w, ": nothing to sent\n\n\n")
+			case e := <-msgChan:
+				fmt.Fprintf(w, "data: %s\n", e)
+				fmt.Fprintf(w, "\n\n")
+			case <-r.Context().Done():
+				return
+			}
+			if f, ok := w.(http.Flusher); ok {
+				f.Flush()
+			}
+		}
+	})
+```
