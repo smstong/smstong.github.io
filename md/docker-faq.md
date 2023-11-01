@@ -34,3 +34,9 @@ COPY my_second_process my_second_process
 COPY my_wrapper_script.sh my_wrapper_script.sh
 CMD ./my_wrapper_script.sh
 ```
+
+# How to test docker default bridge network(docker0) ?
+```
+ docker run --rm alpine ping 172.17.0.1  # from container, ping host
+ docker run --rm alpine ping 1.1.1.1     # from container, ping internet
+```
