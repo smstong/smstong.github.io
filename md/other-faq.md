@@ -30,6 +30,16 @@ openssl s_client -showcerts -connect server.example.com:port
 LDAPTLS_CACERT=/path/to/your/ca/file.crt ldapsearch -H ldaps://server.com ...
 ```
 
+## Why ldapsearch doesn't return memberOf?
+"memberOf" is treated as OPERATIONAL attributes, which will NOT be returned by "*" filter. "+" is used to return Operational attributes.
+```bash
+ldapsearch -o ldif-wrap=no -x -h example.net -p 389 -D "CN=Administrator,CN=Users,DC=example,DC=net" -W "passw" -b "CN=Computers,DC=example,DC=net" "(objectclass=computer)" '*' '+'
+```
+- -o ldif-wrap=no // Remove default line break of 79 characters
+- '+' // to return ONLY operational attributes in ldapsearch
+- '*' // to return ONLY non-operational (user) attributes in ldapsearch (default behavior)
+- '*' '+' // to return user + operational attributes !
+
 ## Can I use key="this is a value" in Java properties file?
 ```
 No.
@@ -42,3 +52,4 @@ rather than
 this is a value.
 
 ```
+
