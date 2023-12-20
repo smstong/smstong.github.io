@@ -52,4 +52,7 @@ rather than
 this is a value.
 
 ```
-
+## How to use "mailx" to send emails to a relay host?
+```bash
+mailx -S smtp=my-relay-host -s mySubject -r myFrom recipient
+```
