@@ -24,3 +24,8 @@ PGPASSWORD=your-password psql -h your-server-ip -U your-username
 \x
 select * from your-table-name;
 ```
+
+# How to know the data directory?
+```bash
+show data_directory;
+```
