@@ -7,6 +7,35 @@ openssl req -x509 -newkey rsa:4096 -nodes -sha256 -days 365 \
         -keyout example.key -out example.crt
 ```
 
+# How to generate a self-signed certificate with IP address as SAN?
+Create a conf file named req.conf as below.
+```
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+C = CA
+ST = ON
+L = Toronto
+O = LinuxExam
+OU = Office
+CN = web1
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+IP.1 = 192.168.0.101
+
+```
+```bash
+openssl req -x509 -newkey rsa:4096 -nodes -sha256 -days 365 \
+        -config req.conf -extensions 'v3_req' \
+        -keyout server.key -out server.crt
+```
+
 # How to generate a CSR (certificate Signing Request) and a password-less key at the same time?
 ```bash
 openssl req -nodes -newkey rsa:2048 \ 
