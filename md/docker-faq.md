@@ -40,3 +40,28 @@ CMD ./my_wrapper_script.sh
  docker run --rm alpine ping 172.17.0.1  # from container, ping host
  docker run --rm alpine ping 1.1.1.1     # from container, ping internet
 ```
+
+# How to merge host folder with container folder?
+Docker volume does NOT support merging. The workround is to run a cp in the startup script.
+e.g.
+Grouper is one of the images that do this actually. A simplified version is demostrated here.
+The purpose is to merge the host's ***./slashRoot/opt/grouper*** to the container's ***/opt/grouper*** folder.
+
+In Dokerfile:
+```
+RUN cp startup.sh /startup.sh
+CMD /startup.sh
+```
+
+In startup.sh:
+```
+#!/bin/bash
+# merge host and container /opt/grouper folder
+cp /slashRoot/opt/grouper /opt/grouper
+/usr/bin/app
+```
+
+Run command:
+```
+docker run -v ./slashRoot:/slashRoot  myimage
+```
