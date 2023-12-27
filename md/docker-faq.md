@@ -57,7 +57,7 @@ In startup.sh:
 ```
 #!/bin/bash
 # merge host and container
-rsync -l -r -v /slashRoot /
+rsync -l -r -v /slashRoot/ /
 /usr/bin/app
 ```
 
