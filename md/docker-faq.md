@@ -56,8 +56,8 @@ CMD /startup.sh
 In startup.sh:
 ```
 #!/bin/bash
-# merge host and container /opt/grouper folder
-cp /slashRoot/opt/grouper /opt/grouper
+# merge host and container
+rsync -l -r -v /slashRoot/ /
 /usr/bin/app
 ```
 
