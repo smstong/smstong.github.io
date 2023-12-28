@@ -23,5 +23,15 @@ a{
 	font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
 }
 
-#content code{
+.quote {
+	text-align: center;
+}
+.quote-content {
+	font-size: 36px;
+}
+.quote-author {
+	font-size: 20px;
+}
+.quote-author::before {
+	content: "--- ";
 }

@@ -1,3 +1,26 @@
+// init quote
+function _init_quote(){
+	const quotes = [
+		{
+			content: "By studying the masters and not their pupils.",
+			author: "Niels Henrik Abel",
+		},
+		{
+			content: "Simplicity is complex. It's never simple to keep things simple. Simple solutions require the most advanced thinking",
+			author: "Richie Norton",
+		},
+	];
+	const getQuote = ()=>{
+		const n = quotes.length;
+		const r = Math.floor(Math.random()*n);
+		return quotes[r];
+	};
+	contentE = document.querySelector(".quote-content");
+	authorE = document.querySelector(".quote-author");
+	const quote = getQuote();
+	contentE.textContent = quote.content;
+	authorE.textContent = quote.author;
+}
 // init marked
 function init(){
 	marked.setOptions({
@@ -22,6 +45,9 @@ function init(){
 			window.location.search = `?doc=${btn.id}`;
 		});
 	});
+
+	// init quote
+	_init_quote();
 }
 // load remote file to element docE
 function loadDoc(docName, docE) {
