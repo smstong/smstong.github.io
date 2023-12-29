@@ -9,6 +9,10 @@ function _init_quote(){
 			content: "Simplicity is complex. It's never simple to keep things simple. Simple solutions require the most advanced thinking",
 			author: "Richie Norton",
 		},
+		{
+			content: "知而不行，是为不知；行而不知，可以致知。",
+			author: "王阳明",
+		},
 	];
 	const getQuote = ()=>{
 		const n = quotes.length;
