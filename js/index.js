@@ -6,7 +6,7 @@ function _init_quote(){
 			author: "Niels Henrik Abel",
 		},
 		{
-			content: "Simplicity is complex. It's never simple to keep things simple. Simple solutions require the most advanced thinking",
+			content: "Simplicity is complex. It's never simple to keep things simple. Simple solutions require the most advanced thinking.",
 			author: "Richie Norton",
 		},
 		{
