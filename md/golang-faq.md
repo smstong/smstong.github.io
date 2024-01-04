@@ -1,4 +1,39 @@
 **GOLANG FAQ**
+# Is net.Conn thread-safe?
+Based on go.dev doc, "Multiple goroutines may invoke methods on a Conn simultaneously."
+That means a single "conn.Write()" won't be intervened by another "conn.Write()". But it doesn't gurantee that 
+consecutive "conn.Write()"s won't be interrupted.
+e.g.
+```go
+func a(conn net.Conn){
+   conn.Write(msg1_1)
+   conn.Write(msg1_2)
+}
+
+func b(conn net.Conn){
+   conn.Write(msg2_1)
+   conn.Write(msg2_2)
+}
+
+go a()
+go b()
+
+```
+The above code may run in an order that you don't want.
+```
+conn.Write(msg1_1)
+conn.Write(msg2_1)
+conn.Write(msg1_2)
+conn.Write(msg2_2)
+```
+To make sure TCP frame is correctly sent, either a frame is sent by a single conn.Write(), or sync.Mutex is used to protect a frame's all "conn.Write()"s.
+
+# Is channel thread-safe?
+Yes, based on its official doc, "A single channel may be used in send statements, receive operations,
+and calls to the built-in functions cap and len by any number of goroutines without further synchronization"
+
+It's kind of obvious as channels themselves are used to sync go routines.
+
 # How to statically build go code?
 
 ```bash
