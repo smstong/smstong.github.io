@@ -1,4 +1,28 @@
 **GOLANG FAQ**
+# How to guarantee writing exactly N bytes with io.Writer?
+The golang doc says that "Write must return a non-nil error if it returns n < len(p)". That means as long as io.Write() returns 
+nil error, it's assured that exactly N bytes were written.
+
+```go
+buf := make([]byte, n)
+if _, err := x.Write(buf); err != nil {
+    log.Fatal(err)
+}
+// if err == nil, it's guaranteed N bytes were successfully written.
+```
+
+# How to guarantee reading exactly N bytes with io.Reader?
+Unlike io.Writer, io.Reader doesn't make sure reading N bytes even if it return a nil error.
+To have the gurantee, io.ReadFull() should be used.
+The official doc says about io.ReadFull() with "On return, n == len(buf) if and only if err == nil"
+```go
+buf := make([]byte, n)
+if _, err := io.ReadFull(r, buf); err != nil {
+	log.Fatal(err)
+}
+// if err == nil, it's guaranteed N bytes were successfully read out.
+```
+
 # Is net.Conn thread-safe?
 Based on go.dev doc, "Multiple goroutines may invoke methods on a Conn simultaneously."
 That means a single "conn.Write()" won't be intervened by another "conn.Write()". But it doesn't gurantee that 
