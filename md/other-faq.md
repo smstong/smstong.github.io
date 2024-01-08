@@ -15,6 +15,14 @@ There are two ways.
 For "Content-Length" header, the recipient has to read all headers first (ending with "\r\n\r\n"), then determines the body length
 by the value of header "Content-Length", and reads that many more bytes as the http body. Since TCP disconnection is not necessary 
 to frame http message now, it can keep alive and be reused for more http traffic.
+```
+HTTP/1.1 200 OK
+Content-Encoding: gzip
+Content-Length: 19826
+Content-Type: text/javascript; charset=utf-8
+
+body......(19826 bytes in total)
+```
 
 For chunked encoding, the http header "Transfer-Encoding: chunked" exists, and it will take prioerity to "Content-Length" header if existing.
 The http body then contains special formated frame, e.g.
