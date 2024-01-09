@@ -27,13 +27,47 @@ CN = web1
 subjectAltName = @alt_names
 
 [alt_names]
-IP.1 = 192.168.0.101
+IP.0 = 192.168.0.101
+IP.1 = 1.2.3.4
+DNS.0 = app1.linuxexam.net
+DNS.1 = app2.linuxexam.net
 
 ```
 ```bash
 openssl req -x509 -newkey rsa:4096 -nodes -sha256 -days 365 \
         -config req.conf -extensions 'v3_req' \
         -keyout server.key -out server.crt
+```
+# How to generate a CSR file with SAN?
+Create a conf file named req.conf as below.
+```
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+C = CA
+ST = ON
+L = Toronto
+O = LinuxExam
+OU = Office
+CN = web1
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+IP.0 = 192.168.0.101
+IP.1 = 1.2.3.4
+DNS.0 = app1.linuxexam.net
+DNS.1 = app2.linuxexam.net
+
+```
+```bash
+openssl req  -newkey rsa:4096 -nodes -sha256 -days 365 \
+        -config req.conf  \
+        -keyout server.key -out server.csr
 ```
 
 # How to generate a CSR (certificate Signing Request) and a password-less key at the same time?
