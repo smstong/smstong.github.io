@@ -13,6 +13,10 @@ function _init_quote(){
 			content: "知而不行，是为不知；行而不知，可以致知。",
 			author: "王阳明",
 		},
+		{
+			content: "笼鸡有食汤锅近，野鹤无粮天地宽。",
+			author: "罗洪先《醒世诗》",
+		},
 	];
 	const getQuote = ()=>{
 		const n = quotes.length;
