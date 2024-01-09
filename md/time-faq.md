@@ -7,7 +7,7 @@ Instant date and time
 2024-01-23T14:02:24Z        # time in Zulu time zone. (Z for Zulu timezone)
 20240123T140224Z            # standard form of above time 
 2024-01-23T14:02:24-5:00    # timezone is 5 hours behind
-2024-01-23T14:02:24.233     # 0.233 second after the second (any pricision is allowded)
+2024-01-23T14:02:24.233     # 0.233 second after the second (any pricision is allowed)
 ```
 
 Time duration
