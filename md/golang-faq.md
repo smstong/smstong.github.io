@@ -1,4 +1,29 @@
 **GOLANG FAQ**
+# How to detect if the http connection is closed or not within http.ServeHTTP()?
+If the http.ServeHTTP() takes a long time to run, it need to detect if the underhood connection is still alive.
+This can be done by read r.Context().Done() channel.
+
+e.g. an example SSE server.
+
+```go
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/event-stream")
+		w.Header().Set("Cache-Control", "no-store")
+
+		for {
+			select {
+			case <-r.Context().Done():
+				return
+			default:
+				fmt.Fprintf(w, "data: %s\n\n", time.Now())
+				if f, ok := w.(http.Flusher); ok {
+					f.Flush()
+				}
+			}
+			time.Sleep(time.Second)
+		}
+	})
+```
 # How to guarantee writing exactly N bytes with io.Writer?
 The golang doc says that "Write must return a non-nil error if it returns n < len(p)". That means as long as io.Write() returns 
 nil error, it's assured that exactly N bytes were written.
