@@ -18,6 +18,11 @@ ssh 192.168.0.20 'docker run --rm ...'
 ```
 The docker client for the above is running on the remote server where dockerd is running.
 
+# How docker -H ssh://remote-dockerd-server ... works?
+Local docker client runs "ssh remote-dockerd-server docker system dial-stdio". Simply put, the remote docker client running as a proxy for local docker client.
+```
+local docker client ---- remote docker client as a proxy  --- remote dockerd 
+```
 
 # How to let docker forcefully pull a image before running it?
 Option "--pull always" can help.
