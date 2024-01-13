@@ -1,5 +1,16 @@
 
 **Docker FAQ**
+# How to use a docker client to manage a remote dockerd server?
+Dockerd can listen to unix/tcp socket, but the security considerations must be in place.
+The simplest way is actually to leverage existing SSH. This way doesn't need any configuration at all as long as an key authoried SSH is ready.
+```
+docker -H ssh://your-remote-dockerd whatever-docker-command
+```
+example.
+```
+docker -H ssh://192.168.0.20 run --rm -it -v /app:/app bash ls /app
+```
+Please be noticed, containers are running on the server where dockerd is running. All volumes, networks are also refered to the dockerd server, not the docker client server.
 
 # How to let docker forcefully pull a image before running it?
 Option "--pull always" can help.
