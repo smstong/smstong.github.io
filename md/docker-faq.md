@@ -12,6 +12,13 @@ docker -H ssh://192.168.0.20 run --rm -it -v /app:/app bash ls /app
 ```
 Please be noticed, containers are running on the server where dockerd is running. All volumes, networks are also refered to the dockerd server, not the docker client server.
 
+Also, this is different than running 
+```
+ssh 192.168.0.20 'docker run --rm ...'
+```
+The docker client for the above is running on the remote server where dockerd is running.
+
+
 # How to let docker forcefully pull a image before running it?
 Option "--pull always" can help.
 
