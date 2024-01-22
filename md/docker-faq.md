@@ -1,5 +1,11 @@
 
 **Docker FAQ**
+# How to disable path convertion of Git-Bash, so it works for docker commands on windows?
+```
+export MSYS_NO_PATHCONV=1
+docker run --rm -it -v ./mydata:/mydata alpine sh
+```
+
 # How to use a docker client to manage a remote dockerd server?
 Dockerd can listen to unix/tcp socket, but the security considerations must be in place.
 The simplest way is actually to leverage existing SSH. This way doesn't need any configuration at all as long as an key authoried SSH is ready.
