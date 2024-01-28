@@ -10,6 +10,10 @@ function _init_quote(){
 			author: "Richie Norton",
 		},
 		{
+			content: "The human race is always faced with a choice: to seek equality in poverty or to seek freedom in inequality.", 
+			author: "Hayek?",
+		},
+		{
 			content: "知而不行，是为不知；行而不知，可以致知。",
 			author: "王阳明",
 		},
