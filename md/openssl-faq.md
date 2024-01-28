@@ -1,5 +1,10 @@
 **OpenSSL FAQ**
 
+# How to view multiple certs in a bundle pem file?
+```bash
+openssl storeutl -noout -text -certs bundle.crt
+```
+
 # How to generate a self-signed certificate?
 ```bash
 openssl req -x509 -newkey rsa:4096 -nodes -sha256 -days 365 \
