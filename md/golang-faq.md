@@ -1,4 +1,10 @@
 **GOLANG FAQ**
+# What's the default buffer size of a golang channel?
+**0**, the default chan is unbuffered at all, which means the chan doesn't have a buffer, and data sent to it immediately appears on the other side.
+The goroutine reading it blocks until another goroutine writes to the chan.
+The goroutine writing it blocks until another goroutine reads from the chan.
+So, unbuffered chan is a great choice for synchronization.
+
 # How to detect if the http connection is closed or not within http.ServeHTTP()?
 If the http.ServeHTTP() takes a long time to run, it need to detect if the underhood connection is still alive.
 This can be done by read r.Context().Done() channel.
