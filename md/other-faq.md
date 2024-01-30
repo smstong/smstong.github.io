@@ -87,6 +87,14 @@ openssl s_client -showcerts -connect server.example.com:port
 ```
 LDAPTLS_CACERT=/path/to/your/ca/file.crt ldapsearch -H ldaps://server.com ...
 ```
+TLS cert verification can also be disabled by
+```
+LDAPTLS_REQCERT=never ldapsearch ....
+```
+Verbose debug info can be enabled by
+```
+ldapsearch -d1 ....
+```
 
 ## Why ldapsearch doesn't return memberOf?
 "memberOf" is treated as OPERATIONAL attributes, which will NOT be returned by "*" filter. "+" is used to return Operational attributes.
