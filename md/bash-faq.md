@@ -1,5 +1,14 @@
 **BASH FAQ**
 
+# How to understand "rsync"'s syntax about trailing slash?
+
+```bash
+# todir will always be created if not existed
+# rsync is idempotent
+rsync -a fromdir/ todir  # copy the "contents" inside fromdir as "contents" under todir
+rsync -a fromdir todir   # copy the "directory" fromdir itself as "contents" under todir
+```
+
 # How to write an extra-long one-line literal string beautifully in multiple lines?
 
 ```bash
