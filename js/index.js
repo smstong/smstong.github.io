@@ -1,34 +1,14 @@
+import { quotes } from "./quotes.js";
+
 // init quote
 function _init_quote(){
-	const quotes = [
-		{
-			content: "By studying the masters and not their pupils.",
-			author: "Niels Henrik Abel",
-		},
-		{
-			content: "Simplicity is complex. It's never simple to keep things simple. Simple solutions require the most advanced thinking.",
-			author: "Richie Norton",
-		},
-		{
-			content: "The human race is always faced with a choice: to seek equality in poverty or to seek freedom in inequality.", 
-			author: "Hayek?",
-		},
-		{
-			content: "知而不行，是为不知；行而不知，可以致知。",
-			author: "王阳明",
-		},
-		{
-			content: "笼鸡有食汤锅近，野鹤无粮天地宽。",
-			author: "罗洪先《醒世诗》",
-		},
-	];
 	const getQuote = ()=>{
 		const n = quotes.length;
 		const r = Math.floor(Math.random()*n);
 		return quotes[r];
 	};
-	contentE = document.querySelector(".quote-content");
-	authorE = document.querySelector(".quote-author");
+	const contentE = document.querySelector(".quote-content");
+	const authorE = document.querySelector(".quote-author");
 	const quote = getQuote();
 	contentE.textContent = quote.content;
 	authorE.textContent = quote.author;
@@ -61,6 +41,7 @@ function init(){
 	// init quote
 	_init_quote();
 }
+
 // load remote file to element docE
 function loadDoc(docName, docE) {
 
@@ -74,7 +55,7 @@ function loadDoc(docName, docE) {
 }
 
 
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', ()=> {
 	init();
 	var docName ="bash"; // default doc
 	const docE = document.querySelector("#content");
@@ -83,4 +64,4 @@ window.onload = function() {
 		docName = urlParams.get('doc');
 	}
 	loadDoc(docName, docE);
-}
+});
