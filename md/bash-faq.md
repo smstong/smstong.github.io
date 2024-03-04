@@ -1,5 +1,17 @@
 **BASH FAQ**
 
+# How to copy "contents" of a folder but not the folder itself?
+
+The special "." let cp to copy all contents including hidden files.
+```bash
+cp -a src/.  dest
+```
+
+OR use rsync instead,
+```bash
+rsync -a src/ dest
+```
+
 # How to understand "rsync"'s syntax about trailing slash?
 
 ```bash
