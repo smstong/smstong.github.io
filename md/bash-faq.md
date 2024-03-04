@@ -2,7 +2,7 @@
 
 # How to copy "contents" of a folder but not the folder itself?
 
-The special "." let cp to copy all contents including hidden files.
+The special "." lets cp to copy all contents including hidden files.
 ```bash
 cp -a src/.  dest
 ```
