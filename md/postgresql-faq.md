@@ -1,4 +1,17 @@
 **PostgreSQL FAQ**
+
+# How to list foreign servers/tables..?
+```
+  \dE[S+] [PATTERN]      list foreign tables
+  \des[+] [PATTERN]      list foreign servers
+  \det[+] [PATTERN]      list foreign tables
+  \deu[+] [PATTERN]      list user mappings
+  \dew[+] [PATTERN]      list foreign-data wrappers
+```
+# How to describe a table?
+```
+\d+ table_name
+```
 # How to connect a remote PostgreSQL server with psql command?
 ```bash
 PGPASSWORD=your-password psql -h your-server-ip -U your-username
