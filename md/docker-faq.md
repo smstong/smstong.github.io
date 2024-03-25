@@ -1,5 +1,9 @@
 
 **Docker FAQ**
+# What'are bad with podman?
+- containers cannot automatically restarted when OS reboots. ( daemonless has a price!)
+- complex settings to avoid "sudo" to run it. ( daemonless has a price again!)
+
 # How to disable path convertion of Git-Bash, so it works for docker commands on windows?
 ```
 export MSYS_NO_PATHCONV=1
