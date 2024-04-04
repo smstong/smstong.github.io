@@ -70,7 +70,7 @@ DNS.1 = app2.linuxexam.net
 
 ```
 ```bash
-openssl req  -newkey rsa:4096 -nodes -sha256 -days 365 \
+openssl req  -newkey rsa:4096 -nodes -sha256 \
         -config req.conf  \
         -keyout server.key -out server.csr
 ```
