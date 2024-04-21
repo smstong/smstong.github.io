@@ -1,5 +1,11 @@
 **OpenSSL FAQ**
 
+# How to get hash and keyed hash?
+```bash
+echo -n "hello" | openssl md5
+echo -n "hello" | openssl md5 -hmac "key"
+```
+
 # How to view multiple certs in a bundle pem file?
 ```bash
 openssl storeutl -noout -text -certs bundle.crt
