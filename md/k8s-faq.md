@@ -21,3 +21,21 @@ Data:
                 Public-Key: (2048 bit)
 
 ```
+
+# How to fsck a PV of longhorn?
+
+If a PV runs into file system issues, it can cause the Pod which mounted it fail, or it cannot be mounted during pod starting. The pod log shows errors and asks to run "fsck".
+To solve this issues, follow steps below.
+
+- From the longhorn UI, locate the node where the PV is mounted.
+- Find the pod named "instance-manager-xxxxxx" running on the node above.
+- kubectl exec into the pod above, the PV is located as /dev/longhorn/pvc-xxxxxx. Run "fsck /dev/longhorn/pvc-xxxx".
+- Restart the pod which mounts the PV
+
+e.g.
+```bash
+[user@rke]$ kubectl -n longhorn-system exec -it instance-manager-577d8a16bf21658e19e12288c6a17d2f -- bash
+instance-manager-577d8a16bf21658e19e12288c6a17d2f:/ # ls /dev/longhorn/pvc-f0ed85cd-d236-4d32-86c4-0a53565740ac
+/dev/longhorn/pvc-f0ed85cd-d236-4d32-86c4-0a53565740ac
+instance-manager-577d8a16bf21658e19e12288c6a17d2f:/ # fsck /dev/longhorn/pvc-f0ed85cd-d236-4d32-86c4-0a53565740ac
+```
