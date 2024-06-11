@@ -23,4 +23,8 @@ export const quotes = [
         content: "Flat is better than nested. Namespaces are one honking great idea -- let's do more of those!",
         author: "Python's this module",
     },
+    {
+        content: "Arguing that you don't care about the right to privacy because you have nothing to hide is no different from saying you don't care about free speeach because you have nothing to say.",
+        author: "Edward Snowden",
+    },
 ];
