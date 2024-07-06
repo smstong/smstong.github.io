@@ -9,7 +9,7 @@ When appending, sed alwasy inserts a "\n" between the existing content and the c
 dst += "\n" + src 
 ```
 
-# How to read a while file into pattern space?
+# How to read a whole file into pattern space?
 
 ```bash
 cat /etc/passwd | sed ':a;$!{N;ba}'
