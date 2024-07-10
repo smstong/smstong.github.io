@@ -38,3 +38,22 @@ Some DB suffixes are hardcoded. e.g.
 - "cn=config" for config database
 - "cn=monitor" for monitor database
 - "" for RootDSE
+
+# What happends when both slapd.d and slapd.conf are provided?
+slapd.d has higher proirity. More details from manual are listed below.
+```
+-f slapd-config-file
+        Specifies   the   slapd   configuration  file.  The  default  is
+        /usr/local/etc/openldap/slapd.conf.
+
+-F slapd-config-directory
+        Specifies the slapd  configuration  directory.  The  default  is
+        /usr/local/etc/openldap/slapd.d.    If   both   -f  and  -F  are
+        specified, the config file will be read and converted to  config
+        directory  format  and  written  to the specified directory.  If
+        neither option is specified, slapd  will  attempt  to  read  the
+        default config directory before trying to use the default config
+        file. If a valid config directory exists then the default config
+        file  is  ignored.  All  of  the  slap tools that use the config
+        options observe this same behavior.
+```
