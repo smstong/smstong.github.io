@@ -17,3 +17,15 @@ PT3M                   # duration of 3 minutes. (T is time disignator)
 PT36H                  # duration of 36 hours.
 PT1DT12H               # duration of 1 day and 12 hours.
 ```
+
+# How to convert Unix epoch to string?
+STRING "@unix-epoch" is used by --date arg.
+```
+date --date @1720626081
+```
+
+# How convert a date string to Unix epoch?
+FORMAT "+%s" is used.
+```
+date +%s
+```
