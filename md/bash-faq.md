@@ -88,3 +88,48 @@ $ CURL_OPTS=('-H' 'Content-Type: application/json' -H "Authorization: BASIC $(ec
 $ curl "${CURL_OPTS[@]}" https://my.server.com/api/whatever
 $ curl "${CURL_OPTS[@]}" https://my.server.com/api/other
 ```
+
+# "set -e" exits immediately if any **UNTESTED** command fails
+The Linux bash manpage is not clear.
+```
+ -e  Exit immediately if a command exits with a non-zero status.
+```
+In fact, this is not accurate, as only untested commands count.
+e.g.
+```
+set -e
+false || true
+echo hello
+```
+The above script always prints "hello". The reason is "false" before "&&" is treated as TESTED command whose exit code doesn't matter.
+
+```
+set -e
+true || false
+echo hello
+```
+The above script also always prints "hello". The reason is the "false" never runs.
+
+Try below and guess the output.
+```
+set -e
+true && false
+echo hello
+```
+```
+set -e
+false && true
+echo hello
+```
+FreeBSD has a better manual,
+```
+ -e errexit
+         Exit immediately if any untested command fails in non-interactive
+         mode.  The exit status of a command is considered to be explicitly
+         tested if the command is part of the list used to control an if,
+         elif, while, or until; if the command is the left hand operand of
+         an “&&” or “||” operator; or if the command is a pipeline preceded
+         by the ! operator.  If a shell function is executed and its exit
+         status is explicitly tested, all commands of the function are con‐
+         sidered to be tested as well.
+```
