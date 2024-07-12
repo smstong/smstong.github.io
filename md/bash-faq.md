@@ -133,3 +133,7 @@ FreeBSD has a better manual,
          status is explicitly tested, all commands of the function are con‐
          sidered to be tested as well.
 ```
+# How to stop MinGW and MSYS from mangling path names?
+```
+export MSYS_NO_PATHCONV=1
+```
