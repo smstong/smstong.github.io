@@ -57,3 +57,32 @@ slapd.d has higher proirity. More details from manual are listed below.
         file  is  ignored.  All  of  the  slap tools that use the config
         options observe this same behavior.
 ```
+
+# What's the difference between LDIF files and OpenLDAP's ldif backend database?
+As far as I know, the biggest difference is OpenLDAP's [ldif backend database](https://www.openldap.org/doc/admin26/backends.html#LDIF) takes advantages of the hierarchy tree
+character of file system.
+
+The most apparent you can see is the "dn" attribute's literal value in ldif database is actually RDN.
+When "dn" is searched, it's calculated by the ldif backend database engine at runtime.
+
+e.g.
+
+"dn" attribute in ldif database file is "cn=schema"
+```
+$ cat /usr/local/etc/slapd.d/cn=config/cn=schema.ldif
+# dn here is RDN in ldif database's file
+dn: cn=schema
+objectClass: olcSchemaConfig
+cn: schema
+```
+
+"dn" attribute calculated at runtime is "cn=schema,cn=config"
+```
+$ ldapsearch -H ldapi:/// -Y EXTERNAL -b cn=config 'cn=schema'
+# The dn attribute is calculated at runtime by the ldif database engine
+dn: cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: schema
+...
+
+```
