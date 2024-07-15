@@ -86,3 +86,11 @@ cn: schema
 ...
 
 ```
+
+# Why can NOT the output of "slapcat" be as input to "ldapadd"?
+The output of "slapcat" is intended to be used as in put to "slapadd".
+The output of "slapcat" cannot generally be used as input to "ldapadd" or other LDAP clients without
+first editing the output. The editing would normally include 
+
+* reordering the records into superior first order
+* removing no-user-modification operational attributes.
