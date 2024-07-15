@@ -94,3 +94,24 @@ first editing the output. The editing would normally include
 
 * reordering the records into superior first order
 * removing no-user-modification operational attributes.
+
+# How to implement "Delete if exists, then add an entry"?
+This can be done by "ldapmodify".
+e.g.
+
+user01.ldif:
+```ldif
+dn: cn=user01,dc=example,dc=org
+changetype: delete
+
+dn: cn=user01,dc=example,dc=org
+changetype: add
+cn: user01
+objectClass: inetOrgPerson
+sn: Smith
+```
+Then, run
+```shell
+# -c option let ldapmodify continues to run even if the delete change fails ( the entry doesn't exist yet ).
+ldapmodify -c -f user01.ldif
+```
