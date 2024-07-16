@@ -1,7 +1,17 @@
 **OpenLDAP FAQ**
 
+# What is the origin of the name "slapd"?
+The name "sldapd" is extracted from (S)tandalone (L)D(AP) (d)aemon.
+The word "standalone" means it's meant to run by itself, instead of being invoked by inetd service.
+
+# How to run slapd in foreground?
+Normally slapd forks and disassociates itself from the invoking tty.
+If "-d" is given, even with a zero argument, slapd will not fork and disassociate from the invoking tty.
+
 # What's slapd-config?
 OpenLDAP 2.3 and later versions have transistioned to using LDIF database to save their configurations.
+
+As slapd-config can be changed when slapd is running, it's also called **online config**.
 
 This is a special database backend, e.g.
 ```
