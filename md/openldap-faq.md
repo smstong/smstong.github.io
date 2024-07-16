@@ -125,3 +125,30 @@ Then, run
 # -c option let ldapmodify continues to run even if the delete change fails ( the entry doesn't exist yet ).
 ldapmodify -c -f user01.ldif
 ```
+
+# How to implement "add if not present, replace if present an Attribute"?
+The "replace" operation just does it.
+e.g.
+```
+dn: cn=config
+changetype: modify
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: $LDAP_TLS_CA_FILE
+-
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: $LDAP_TLS_CERT_FILE
+-
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: $LDAP_TLS_KEY_FILE
+-
+replace: olcTLSVerifyClient
+olcTLSVerifyClient: $LDAP_TLS_VERIFY_CLIENTS
+```
+More details about "replace" can be found in RFC4511.
+```
+replace: replace all existing values of the modification
+           attribute with the new values listed, creating the attribute
+           if it did not already exist.  A replace with no value will
+           delete the entire attribute if it exists, and it is ignored
+           if the attribute does not exist.
+```
