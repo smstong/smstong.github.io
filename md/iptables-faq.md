@@ -1,4 +1,9 @@
 **iptables**
+# "iptables -L" is a liar
+"iptables -L" doesn't include some crucial information, like the interface a rule is tied to.
+
+Instead, always use "iptables -S".
+
 # What does "table" in "iptables" mean?
 A table is a set of rules that work together to reach a goal.
 Tables are orgnized by *area of concern*.
