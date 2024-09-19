@@ -62,3 +62,13 @@ A packet can be in different "state" in the context of conntrack.
 - **DNAT**: When the destination address has been altered by NAT rules.
 
 # Common rules
+
+# How RHEL automatically save/restore iptables rules?
+RPM package iptables-services includes a systemd service that runs iptables-restore when system boots up.
+
+```
+# rpm -ql iptables-services | grep systemd
+/usr/lib/systemd/system/ip6tables.service
+/usr/lib/systemd/system/iptables.service
+```
+**Note**: starting from RHEL9, iptables has been deprecated in favor of firewalld.
