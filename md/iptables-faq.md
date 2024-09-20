@@ -86,6 +86,10 @@ Userspace apps read and write this memory using **getsockopt()** and **setsockop
 To make it easier, the userspace iptables provides a library named libiptc which provides high level functions to 
 add/delete/replace rules.
 
+# How Netfilter fit in the kernel network system?
+
+![netfilter in network system](./md/iptables/1.png)
+
 # Useful links
 - [Official doc for netfilter](https://www.netfilter.org/documentation/index.html)
 - [A Deep Dive into Iptables and Netfilter Architecture
