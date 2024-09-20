@@ -1,4 +1,14 @@
 **iptables**
+
+# What does the word "iptables" mean?
+The word "iptables" may refer to different things.
+- The commandline tool "iptables", usually installed as /sbin/iptables
+- The ipables binary API / syscall (via setsockopt() getsockopt())
+- The kernel module which maintains the tables in memory
+
+While those parts are tightly related, some of them maybe replaced by other implementations.
+E.g. the command "iptables" works well with nftables implementation, even works with bpfilter kernel module.
+
 # "iptables -L" is a liar
 "iptables -L" doesn't include some crucial information, like the interface a rule is tied to.
 
@@ -90,8 +100,16 @@ add/delete/replace rules.
 
 ![netfilter in network system](./md/iptables/1.png)
 
+# Some trends about iptables
+
+- Userspace: iptables, Kernel space: nftables, netfilter
+- Userspace: nft, Kernel space: nftables, netfilter
+- Userspace: iptables, Kernel space: bpfilter
+
 # Useful links
 - [Official doc for netfilter](https://www.netfilter.org/documentation/index.html)
 - [A Deep Dive into Iptables and Netfilter Architecture
 ](https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture)
 - [Querying libiptc HowTO](https://tldp.org/HOWTO/Querying-libiptc-HOWTO/index.html)
+- [bpfilter](https://bpfilter.io)
+- [BPF comes to firewalls](https://lwn.net/Articles/747551/)
