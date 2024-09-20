@@ -10,6 +10,12 @@ Tables are orgnized by *area of concern*.
 
 For example, "nat" table focuses on NAT implementation. 
 
+# Why do we use tables rather than directly put rules directly into netfilter's hook points?
+Even though the rules contained in tables are eventually put into netfilter's hook points, the table mechanism helps insert rules in a specific order.
+
+E.g. For the INPUT hook point, the rules are always inserted in such order, **mangle**, **filter**, **security**, **nat**.
+Without tables, it's hard and less clear to insert rules in the right order.
+
 # What's a CHAIN?
 A chain of rules. 
 The 5 builtin chains are corresponding to netfilter's 5 hook points.
@@ -71,4 +77,17 @@ RPM package iptables-services includes a systemd service that runs iptables-rest
 /usr/lib/systemd/system/ip6tables.service
 /usr/lib/systemd/system/iptables.service
 ```
-**Note**: starting from RHEL9, iptables has been deprecated in favor of firewalld.
+**Note**: starting from RHEL9, iptables has been deprecated in favor of firewalld.o
+
+# How userspace apps interact with the kernel part iptables? 
+The kernel part iptables keeps a named array of rules in memory (hence the name 'iptables').
+Userspace apps read and write this memory using **getsockopt()** and **setsockopt()** syscall.
+
+To make it easier, the userspace iptables provides a library named libiptc which provides high level functions to 
+add/delete/replace rules.
+
+# Useful links
+- [Official doc for netfilter](https://www.netfilter.org/documentation/index.html)
+- [A Deep Dive into Iptables and Netfilter Architecture
+](https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture)
+- [Querying libiptc HowTO](https://tldp.org/HOWTO/Querying-libiptc-HOWTO/index.html)
