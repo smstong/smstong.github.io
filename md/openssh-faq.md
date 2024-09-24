@@ -12,3 +12,10 @@ ssh-keygen -l -f ~/.ssh/id_rsa.pub
 ```
 
 # Server side
+## How to customize before login and after login message?
+
+/etc/ssh/sshd_config
+```
+Banner /etc/issue   # send /etc/issue to remote user before login, default is "None".
+PrintMotd yes       # print /etc/motd after a user logs in interactively, default is "yes"
+```
