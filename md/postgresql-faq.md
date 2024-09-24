@@ -71,3 +71,15 @@ pg_dump -h server1 -U login-name -d db-name > db-name.bk
 createdb -h server2 -U login-name db-name
 psql -h server2 -U login-name --file db-name.bk
 ```
+
+# How to list schemas under current database?
+```
+\dn
+```
+
+# How to list tables under non public schema?
+By default, psql search tables contained in the default "public" schema.
+To list tables in other schemas, e.g. "myschema",
+```
+\dt myschema.*
+```
