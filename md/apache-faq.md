@@ -42,3 +42,15 @@ php script
 ```
 echo $_SERVER['APP_ENV']
 ```
+
+# What's PassEnv?
+
+```
+PassEnv MY_VAR
+```
+
+is a simpler form of
+
+```
+SetEnv MY_VAR ${MY_VAR}
+```
