@@ -139,7 +139,7 @@ export MSYS_NO_PATHCONV=1
 ```
 
 # Why bash has a colon (:) built-in command?
-In the old days, shell didn't have "true" command, ```:``` is used instead. 
+In the old days, shell didn't have "true" command, ```:``` was used instead. 
 Nowadays, ```:``` is used for other purposes.
 
 e.g.
