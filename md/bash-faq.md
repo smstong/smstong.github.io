@@ -137,3 +137,21 @@ FreeBSD has a better manual,
 ```
 export MSYS_NO_PATHCONV=1
 ```
+
+# Why bash has a colon (:) built-in command?
+In the old days, shell didn't have "true" command, ```:``` was used instead. 
+Nowadays, ```:``` is used for other purposes.
+
+e.g.
+
+Do nothing, as a placeholder.
+```
+if [[ $name == "John" ]]; then : ; else ...
+```
+
+Evaluate a express.
+```
+set -e
+: ${MY_VAR:?}
+```
+if MY_VAR is not defined, then the shell exits. If MY_VAR is defined, nothing happens.
