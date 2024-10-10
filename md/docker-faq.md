@@ -98,3 +98,17 @@ Run command:
 ```
 docker run -v ./slashRoot:/slashRoot  myimage
 ```
+
+# Why docker published port is accessible from outside the host, but not from the external IP configured on the host?
+A common reason is the host has customized routing tables.
+Docker dynamically add routes on the "main" routing table, but it doesn't update other customized tables.
+
+It's hard to solve the problem. But if the docker bridge is fixed, you can manually add the routes into your customized routing tables.
+
+e.g.
+```
+# ip route list table apps
+default via 182.150.183.1 dev ens160
+182.150.183.0/25 dev ens160 scope link
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 # manully added route for docker0 bridge
+```
