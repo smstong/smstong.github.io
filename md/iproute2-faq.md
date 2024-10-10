@@ -19,3 +19,32 @@ If no table name is specified in ip command, the default routing table is "main"
 ip route get 1.1.1.1                    # get route to 1.1.1.1 
 ip route get 1.1.1.1 from 192.168.0.1   # get route to 1.1.1.1 from specific local IP
 ```
+# An example of policy routing for a Linux machine with two networks connected
+The Linux machine has two network cards,
+
+* 182.150.151.109/24 ( gateway 182.150.151.1 )
+* 182.150.183.109/25 ( gateway 182.150.183.1 )
+
+Based on the source IP, different routing table is selected.
+```
+# ip rule
+0:      from all lookup local
+32764:  from 182.150.151.109 lookup management
+32765:  from 182.150.183.109 lookup apps
+32766:  from all lookup main
+32767:  from all lookup default
+```
+
+Table "apps" is used for packets with source IP 182.150.183.109.
+```
+# ip route list table apps
+default via 182.150.183.1 dev ens160
+182.150.183.0/25 dev ens160 scope link
+```
+
+Table "management" is used for packets with source IP 182.150.151.109.
+```
+# ip route list table apps
+default via 182.150.151.1 dev ens160
+182.150.151.0/24 dev ens160 scope link
+```
