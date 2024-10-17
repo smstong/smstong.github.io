@@ -1,4 +1,57 @@
 **GOLANG FAQ**
+# Why can constants be untyped?
+Go is a strong typed language, but constants in Go can be untyped.
+The main reason is FLEXIBILITY.
+
+E.g.
+numeric constants can have unlimited size.
+```
+// this is ok
+const x =     999999999999999999999999999999999999999999999999999999999
+
+// this triggers compiling error
+const x int = 999999999999999999999999999999999999999999999999999999999
+```
+untyped constants are saved/calculated at compiling time by thie GO compiler.
+
+Another example for untyped string.
+```
+const c = "hello"
+v := "hello"
+
+type MyString string
+var MyString m 
+m = c
+m = v  // compiling error
+```
+More at [Go Blog](https://go.dev/blog/constants).
+
+# Why does len("hello,世界") return 12?
+In Go, string is slice of bytes. Any byte value can be saved in a string, the bytes are not necessary to be a valid UTF-8 bytes. 
+That being said, in most cases, we should use string fro UTF-8 encoded characters.
+
+# How to get each "rune" in a string?
+for range takes care of UTF-8 encoding automatically for you.
+Note: the index is still for the starting byte.
+```
+s := "hello,世界"
+for i, r := range s {
+	fmt.Printf("%d: %c", i, r)
+}
+
+$ go run hello.go
+0: h
+1: e
+2: l
+3: l
+4: o
+5: ,
+6: 世
+9: 界
+
+```
+More details at [Go Blog](https://go.dev/blog/strings)
+
 # What's the default buffer size of a golang channel?
 **0**, the default chan is unbuffered at all, which means the chan doesn't have a buffer, and data sent to it immediately appears on the other side.
 The goroutine reading it blocks until another goroutine writes to the chan.
