@@ -155,3 +155,10 @@ set -e
 : ${MY_VAR:?}
 ```
 if MY_VAR is not defined, then the shell exits. If MY_VAR is defined, nothing happens.
+
+# What if "chmod" is not executable?
+This is another chicken-and-egg problem. There are several ways to fix it. The simplest one is
+listed here.
+```
+/lib64/ld-linux-x86-64.so.2 /bin/chmod +x /bin/chmod
+```
