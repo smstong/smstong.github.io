@@ -174,7 +174,7 @@ sub, err := fs.Sub(UI, "ui")
 if err != nil {
     panic(err)
 }
-http.Handle("/", http.FS(sub))
+http.Handle("/", http.FileServer(http.FS(sub)))
 
 
 ```
