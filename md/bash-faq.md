@@ -1,4 +1,18 @@
 **BASH FAQ**
+# How to get the current pos of cursor?
+
+```
+stty -echo
+
+echo -ne "\033[6n"
+read -s -d\[ esi
+read -s -d R report
+row=$(echo $report | cut -d\; -f1)
+col=$(echo $report | cut -d\; -f2)
+
+stty echo
+echo $row $col
+```
 
 # How to copy "contents" of a folder but not the folder itself?
 
