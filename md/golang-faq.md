@@ -4,9 +4,8 @@
 As long as a folder containing a file named "go.mod", it's treated as a module.
 
 # Can a module name be different to its container folder?
-Yes. But don't do that! Especially if your project is on remote git repo like github.
-If a module name is URL, go tools fetch that URL. If your module name is not the same as the repo name, 
-go can NOT find it.
+Yes. But don't do that! Unless you really don't want your project to be imported by other projects.
+Go import resolves module path based on module name, if the name cannot be resolved, it cannot find it.
 
 # Does "import" support relative path?
 No Relative Paths: Imports are always absolute paths relative to the module root.
