@@ -1,6 +1,19 @@
 **GIT FAQ**
+# How to show the differences between the working area and staged area?
+```
+git diff
+```
+# How to show the differences between the stagged area and the last commit?
+```
+git diff --staged
+```
 
-# how to cancel a failed/conflict merge?
+# How to show the differences between that last commit and the second last commit (i.e. the most recent change)?
+```
+git show
+```
+
+# How to cancel a failed/conflict merge?
 
 A failed "conflict" merge changes the files in your working directory.
 
