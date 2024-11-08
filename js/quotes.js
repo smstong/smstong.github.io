@@ -27,4 +27,8 @@ export const quotes = [
         content: "Arguing that you don't care about the right to privacy because you have nothing to hide is no different from saying you don't care about free speeach because you have nothing to say.",
         author: "Edward Snowden",
     },
+    {
+        content: "井蛙不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。",
+        author: "《庄子集释》卷六下《外篇.秋水》",
+    },
 ];
