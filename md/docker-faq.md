@@ -1,5 +1,9 @@
 
 **Docker FAQ**
+# How does docker implement container autorestart?
+Docker stores containers' Restart Policy in ```/var/docker/containers/${container_id}/hostconfig.json```.
+This file survive the docker daemon restart, and OS restart. So once docker daemon can make sure to auto start containers if needed.
+
 # What'are bad with podman?
 - containers cannot automatically restarted when OS reboots. ( daemonless has a price!)
 - complex settings to avoid "sudo" to run it. ( daemonless has a price again!)
