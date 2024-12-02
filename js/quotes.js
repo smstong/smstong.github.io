@@ -31,4 +31,8 @@ export const quotes = [
         content: "井蛙不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。",
         author: "《庄子集释》卷六下《外篇.秋水》",
     },
+    {
+        content: "All models are wrong, but some are useful.",
+        author: "George E. P. Box",
+    },
 ];
