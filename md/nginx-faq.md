@@ -1,4 +1,12 @@
 **Nginx FAQ**
+# What's the cert order in file specified by ssl_certificate?
+The server certificate must appear before the chained certificates in the combined file.
+```
+server cert
+intermediate cert
+root cert
+```
+
 # Does nginx.conf interpolate environment variables?
 No.
 

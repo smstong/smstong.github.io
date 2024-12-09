@@ -1,5 +1,13 @@
 **Apache FAQ**
 
+# What's the cert order of SSLCertificateFile?
+The cert file may also include intermediate CA certificates, sorted from **leaf** to **root**.
+```
+server cert
+intermediate cert
+root cert
+```
+
 # How environment variables are used in httpd.conf?
 
 There are TWO types of environment variables in httpd.conf,
