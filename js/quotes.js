@@ -35,4 +35,8 @@ export const quotes = [
         content: "All models are wrong, but some are useful.",
         author: "George E. P. Box",
     },
+    {
+        content: "No software relies on the obscurity of source code for security.",
+        author: "pfSense doc",
+    },
 ];
