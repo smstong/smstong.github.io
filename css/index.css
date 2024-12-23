@@ -1,9 +1,43 @@
+* {
+	box-sizing: border-box;
+}
 a{
 	text-decoration: none;
 }
+header h1 {
+	font-size: 36px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: gray;
+}
+footer {
+	text-align: center;
+}
+main {
+	display: flex;
+	flex-wrap: wrap-reverse; 
+	justify-content: space-between;
+	align-items: start;
+}
+#sidebar {
+	flex: 1;
+	min-width: min(100%, 10em);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+	justify-content: space-between;
+	padding: 1em;
+}
+#sidebar > *{
+	flex: 1;
+}
+#sidebar > button {
+	background-color: gray;
+	color: white;
+}
 #content {
+	flex: 1000;
+	min-width: min(100%, 40em);
 	font-family: "Monospace";
-	margin: 0 30px;
 }
 
 #content h1{
