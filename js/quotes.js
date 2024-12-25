@@ -39,4 +39,8 @@ export const quotes = [
         content: "No software relies on the obscurity of source code for security.",
         author: "pfSense doc",
     },
+    {
+        content: "其上申韩者，其下必佛老。",
+        author: "王夫之",
+    },
 ];
