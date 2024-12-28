@@ -5,7 +5,7 @@ a{
 	text-decoration: none;
 }
 header h1 {
-	font-size: 36px;
+	font-size: 2rem;
 	font-family: Arial, Helvetica, sans-serif;
 	color: gray;
 }
@@ -49,11 +49,11 @@ main {
 }
 
 #content pre {
-	padding: 16px;
+	padding: 1em;
 	line-height: 1.45;
 	border-radius: 6px;
 	background-color: #f6f8fa;
-	font-size: 14px;
+	font-size: 1em;
 	font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
 }
 
@@ -61,10 +61,10 @@ main {
 	text-align: center;
 }
 .quote-content {
-	font-size: 36px;
+	font-size: 2em;
 }
 .quote-author {
-	font-size: 20px;
+	font-size: 1.3em;
 }
 .quote-author::before {
 	content: "--- ";
