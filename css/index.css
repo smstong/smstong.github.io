@@ -9,6 +9,14 @@ header h1 {
 	font-family: Arial, Helvetica, sans-serif;
 	color: gray;
 }
+header > ul {
+	padding: 0;
+	display: flex;
+	justify-content: end;
+	list-style: none;
+	gap: 1em;
+	align-content: space-between;
+}
 footer {
 	text-align: center;
 }
@@ -68,4 +76,65 @@ main {
 }
 .quote-author::before {
 	content: "--- ";
+}
+
+/*******logo***********/
+#logo {
+	width: max(10vw, 10em);
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+}
+#logo > img {
+	grid-row: 1 / -1 ;
+	grid-column: 1 / -1;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	transform: rotate(-30deg);
+	z-index: -1;
+}
+#logo > span {
+	font-size: 4vw;
+	mix-blend-mode:overlay;
+}
+#logo > span:nth-child(1) {
+	grid-row: 2;
+	grid-column: 1;
+}
+#logo > span:nth-child(2) {
+	grid-row: 2;
+	grid-column: 2;
+}
+#logo > span:nth-child(3) {
+	grid-row: 2;
+	grid-column: 3;
+}
+#logo > span:nth-child(4) {
+	grid-row: 2;
+	grid-column: 4;
+}
+/* X */
+#logo > span:nth-child(5) {
+	grid-row: 2;
+	grid-column: 5;
+	color:red;
+}
+#logo > span:nth-child(6) {
+	grid-row: 1;
+	grid-column: 5;
+}
+/* X */
+#logo > span:nth-child(7) {
+	grid-row: 2;
+	grid-column: 5;
+	color:red;
+}
+#logo > span:nth-child(8) {
+	grid-row: 3;
+	grid-column: 5;
+}
+#logo > span:nth-child(9) {
+	grid-row: 4;
+	grid-column: 5;
 }
