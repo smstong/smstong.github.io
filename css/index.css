@@ -4,83 +4,20 @@
 a{
 	text-decoration: none;
 }
-header h1 {
-	font-size: 2rem;
-	font-family: Arial, Helvetica, sans-serif;
-	color: gray;
+
+/********** top **************/
+#top a:not(:first-child) {
+	padding: 1em;
 }
-header > ul {
-	padding: 0;
+/********** header **************/
+header {
 	display: flex;
-	justify-content: end;
-	list-style: none;
-	gap: 1em;
-	align-content: space-between;
-}
-footer {
-	text-align: center;
-}
-main {
-	display: flex;
-	flex-wrap: wrap-reverse; 
-	justify-content: space-between;
-	align-items: start;
-}
-#sidebar {
-	flex: 1;
-	min-width: min(100%, 10em);
-	display: flex;
+	gap: 3em;
 	flex-wrap: wrap;
-	gap: 2px;
-	justify-content: space-between;
-	padding: 1em;
 }
-#sidebar > *{
-	flex: 1;
-}
-#sidebar > button {
-	background-color: gray;
-	color: white;
-}
-#content {
-	flex: 1000;
-	min-width: min(100%, 40em);
-	font-family: "Monospace";
-}
-
-#content h1{
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-	font-size: 2em;
-	color: #24292f;
-	border-bottom: 1px solid #d8dee4;
-	padding-bottom: .3em;
-}
-
-#content pre {
-	padding: 1em;
-	line-height: 1.45;
-	border-radius: 6px;
-	background-color: #f6f8fa;
-	font-size: 1em;
-	font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
-}
-
-.quote {
-	text-align: center;
-}
-.quote-content {
-	font-size: 2em;
-}
-.quote-author {
-	font-size: 1.3em;
-}
-.quote-author::before {
-	content: "--- ";
-}
-
-/*******logo***********/
 #logo {
-	width: max(10vw, 10em);
+	flex: none;
+	flex-basis: 10vw;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(4, 1fr);
@@ -137,4 +74,70 @@ main {
 #logo > span:nth-child(9) {
 	grid-row: 4;
 	grid-column: 5;
+}
+
+/**************** footer *****************/
+footer {
+	text-align: center;
+}
+
+/**************** main *****************/
+main {
+	display: flex;
+	flex-wrap: wrap-reverse; 
+	justify-content: space-between;
+	align-items: start;
+}
+#sidebar {
+	flex: 1;
+	min-width: min(100%, 10em);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+	justify-content: space-between;
+	padding: 1em;
+}
+#sidebar > *{
+	flex: 1;
+}
+#sidebar > button {
+	background-color: gray;
+	color: white;
+}
+#content {
+	flex: 1000;
+	min-width: min(100%, 40em);
+	font-family: "Monospace";
+}
+
+#content h1{
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+	font-size: 2em;
+	color: #24292f;
+	border-bottom: 1px solid #d8dee4;
+	padding-bottom: .3em;
+}
+
+#content pre {
+	padding: 1em;
+	line-height: 1.45;
+	border-radius: 6px;
+	background-color: #f6f8fa;
+	font-size: 1em;
+	font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+
+#quote {
+	text-align: center;
+	max-width: 65em;
+	flex: 1fr;
+}
+.quote-content {
+	font-size: 2em;
+}
+.quote-author {
+	font-size: 1.3em;
+}
+.quote-author::before {
+	content: "--- ";
 }
