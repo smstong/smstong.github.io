@@ -43,4 +43,8 @@ export const quotes = [
         content: "其上申韩者，其下必佛老。",
         author: "王夫之",
     },
+    {
+        content: "Insanity is doing the same thing over and over again and expecting different results.",
+        author: "Albert Einstein(?)",
+    },
 ];
