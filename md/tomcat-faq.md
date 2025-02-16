@@ -9,6 +9,11 @@ e.g. In ```$TOMCAT_HOME/webapps/app1/WEB-INF/web.xml```
 </web-app>
 ```
 
+# How to get current web app's location in server filesystem?
+```
+this.getServletContext().getRealPath("/");
+```
+
 # How to let tomcat automatically reload web app if a change is detected?
 Set ```reloadable="true"``` in the web app's context.
 e.g. In file ```$TOMCAT_HOME/webapps/app1/META-INF/context.xml```
