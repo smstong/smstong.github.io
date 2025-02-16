@@ -1,4 +1,23 @@
 **Tomcat FAQ**
+
+# How to enable servlet annotation like @WebSocket("/hello")?
+Set ```metadata-complete="false"``` in web.xml.
+e.g. In ```$TOMCAT_HOME/webapps/app1/WEB-INF/web.xml```
+```
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+  metadata-complete="false">
+</web-app>
+```
+
+# How to let tomcat automatically reload web app if a change is detected?
+Set ```reloadable="true"``` in the web app's context.
+e.g. In file ```$TOMCAT_HOME/webapps/app1/META-INF/context.xml```
+```
+<Context reloadable="true">
+</Context>
+```
+More info can be found at [Tomcat Context](https://tomcat.apache.org/tomcat-11.0-doc/config/context.html).
+
 # Hello world servlet to show its running context
 ```java
 public class HelloServlet extends HttpServlet {
