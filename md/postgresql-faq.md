@@ -1,4 +1,29 @@
 **PostgreSQL FAQ**
+# How to create a standby server?
+**Step 1** Make a backup from the primary server
+```
+# -R write replication config into postgresql.auto.conf, automatically create standby.signal file
+# -X enable record-based log shipping (streaming) 
+# -C create replication slot 
+# -S name the replication slot
+# -D target dir to save the backup
+
+pg_basebackup -R -X stream -C -S standby_1 -D standby_1
+```
+
+**Step 2** Prepare the standby server
+```
+# copy the backup folder "standby_1" into standby server
+# create recovery.signal file into "standby_1"
+# start standby server, e.g.
+postgres -D standby_1 -k .
+```
+
+# How to promte a standby server to primary?
+```
+# this will delte the file standby_1/standby.signal automatically
+pg_ctl -D standby_1 promote
+```
 
 # How to list foreign servers/tables..?
 ```
