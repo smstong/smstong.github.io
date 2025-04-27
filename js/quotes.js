@@ -47,4 +47,8 @@ export const quotes = [
         content: "Insanity is doing the same thing over and over again and expecting different results.",
         author: "Albert Einstein(?)",
     },
+    {
+        content: "成大功者，不谋于众；论至德者，不和于俗。",
+        author: "《商君书》",
+    },
 ];
