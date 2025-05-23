@@ -51,4 +51,8 @@ export const quotes = [
         content: "成大功者，不谋于众；论至德者，不和于俗。",
         author: "《商君书》",
     },
+    {
+        content: "There are only two hard things in Computer Science: code invalidation and naming things.",
+        author: "Phil Karlton",
+    },
 ];
