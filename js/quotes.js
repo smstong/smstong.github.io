@@ -52,7 +52,7 @@ export const quotes = [
         author: "《商君书》",
     },
     {
-        content: "There are only two hard things in Computer Science: code invalidation and naming things.",
+        content: "There are only two hard things in Computer Science: cache invalidation and naming things.",
         author: "Phil Karlton",
     },
 ];
