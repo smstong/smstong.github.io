@@ -55,4 +55,8 @@ export const quotes = [
         content: "There are only two hard things in Computer Science: cache invalidation and naming things.",
         author: "Phil Karlton",
     },
+    {
+        content: "If I had asked people what they wanted, they would have said faster horses.",
+        author: "Henry Ford",
+    },
 ];
