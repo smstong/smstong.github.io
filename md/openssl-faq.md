@@ -10,8 +10,21 @@ echo -n "hello" | openssl md5 -hmac "key"
 ```bash
 openssl storeutl -noout -text -certs bundle.crt
 ```
+# How to generate a private key?
+```bash
+openssl genrsa -out example.key 2048
+```
+# How to generate a CSR based on existing private key?
+```bash
+openssl req -key example.key -new -out example.csr
+```
 
-# How to generate a self-signed certificate?
+# How to generate a new cert by signing a csr?
+```bash
+openssl x509 -signkey example.key -in example.csr -req -days 3650 -out example.crt
+```
+
+# How to generate a new private key and self-signed certificate together?
 ```bash
 openssl req -x509 -newkey rsa:4096 -nodes -sha256 -days 365 \
         -subj '/C=CA/ST=Ontario/O=example/CN=example.com' \
