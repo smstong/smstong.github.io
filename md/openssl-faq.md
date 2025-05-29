@@ -56,6 +56,7 @@ CN = web1
 
 [v3_req]
 subjectAltName = @alt_names
+authorityKeyIdentifier = keyid:always # signing cert's id, for self signed cert, "always" is needed to include AKID.
 
 [alt_names]
 IP.0 = 192.168.0.101
@@ -67,10 +68,10 @@ DNS.1 = app2.linuxexam.net
 Note: the default section to use is "req". so ```-section req`` is optional.
 
 ```bash
-openssl req -x509 -newkey rsa:4096 -nodes -sha256 \
+openssl req -x509  -key example.key \
         -days 365 \
         -config req.conf 'v3_req' -section req \
-        -keyout server.key -out server.crt
+        -out server.crt
 ```
 # How to generate a CSR file with SAN?
 Create a conf file named req.conf as below.
@@ -90,6 +91,7 @@ CN = web1
 
 [v3_req]
 subjectAltName = @alt_names
+subjectKeyIdentifier = hash # this is the default SKID
 
 [alt_names]
 IP.0 = 192.168.0.101
@@ -98,12 +100,13 @@ DNS.0 = app1.linuxexam.net
 DNS.1 = app2.linuxexam.net
 
 ```
-Note: the default section to use is "req". so ```-section req`` is optional.
+
 ```bash
 openssl req  -newkey rsa:4096 -nodes -sha256 \
         -config req.conf -section req \
         -keyout server.key -out server.csr
 ```
+Note: the default section to use is "req". so ```-section req`` is optional.
 
 # How to generate a CSR (certificate Signing Request) and a password-less key at the same time?
 ```bash
