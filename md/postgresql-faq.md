@@ -85,16 +85,40 @@ e.g.
 CREATE ROLE "user1" WITH LOGIN PASSWORD 'secretpassword';
 ```
 
-# How to backup and restore a database?
+# How to clone and restore a database from clone?
+Database clone can only happen on the same postgres instance, and when ther are no active db connections.
+```bash
+# stop all database connections
+
+# clone
+createdb -T my_db_name my_db_name-20250925
+
+# drop db
+dropdb my_db_name
+
+# restore from clone
+createdb -T my_db_name-20250925 my_db_name
+
+```
+# How to logical backup and restore a database?
+Logical backup exports current database as sql statements applied to **template0**.
+The custom format (-Fc) backup file is way smaller than plain text file while taking a little more processing time.
 
 ```bash
-# backup on server1
-pg_dump -h server1 -U login-name -d db-name > db-name.bk
+# run as "postgres" account
+su - postgres
 
-# transfer db-name.bk to server2
-# restore on server2
-createdb -h server2 -U login-name db-name
-psql -h server2 -U login-name --file db-name.bk
+# backup 
+pg_dump -d my_db_name -Fc -f my_db_name.2025-09-15.bk
+
+# delete db
+dropdb my_db_name
+
+# create db from template0 
+createdb -T template0 my_db_name
+
+# restore
+pg_restore -d my_db_name mb_db_name.2025-09-15.bk
 ```
 
 # How to list schemas under current database?
