@@ -62,3 +62,12 @@ is a simpler form of
 ```
 SetEnv MY_VAR ${MY_VAR}
 ```
+
+# How to let mod_proxy_http reserve the original http header "Host"?
+```
+ProxyPreserveHost On
+```
+Belive or not, by defaut Apache http reverse proxy does NOT reserve the original http header "Host".
+The reason is by default this mod sends "X-Forwarded-Host" header to the backend to inform the original http header "Host".
+Unfortunately, not all backend servers honor "X-Forwarded-Host". For example, Tomcat just ignores it by default.
+To let Tomcat work with it, you have to configure RemoteIpValve.
