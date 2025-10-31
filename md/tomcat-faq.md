@@ -64,3 +64,34 @@ compile with
 ```bash
 javac -cp $TOMCAT_HOME/lib/servlet-api.jar HelloServlet.java
 ```
+
+# How HttpServletRequest.getServerName() works?
+## read from http header "Host"
+
+If "Host" http header exists (normal case), it is used by splitting it into ServerName and ServerPort.
+For example, if the Host header is "example.com:8443", r.getServerName() returns "example.com".
+
+Usually the frontend reverse proxy sets up "Host" header to the backend Tomcat. 
+For example,
+- Nginx uses ``` proxy_set_header Host $host; ```, 
+- Apache uses ``` ProxyPreserveHost On ```
+
+Please be warned that the "Host" header may also be set at Tomcat side by some valves like "RemoteIpValve".
+For example,
+```
+<Valve className="org.apache.catalina.valves.RemoteIpValve"
+       remoteIpHeader="x-forwarded-for"
+       protocolHeader="x-forwarded-proto"
+       proxiesHeader="x-forwarded-by"
+       hostHeader="x-forwarded-host"           <!-- set "Host" header -->
+       internalProxies="192\.168\.0\.10|127\.0\.0\.1|::1"
+       requestAttributesEnabled="true" />
+```
+r.getServerName() returns the value of http header "x-forwarded-host".
+
+## read from proxyName configuration
+
+If the "Host" is missing, it returns the value defined by Tomcat as "proxyName" in the Connector.
+
+For example, ```<Connector proxyName="myhost.com" proxyPort="443" />```, r.getServerName() returns "myhost.com".
+
