@@ -59,4 +59,8 @@ export const quotes = [
         content: "If I had asked people what they wanted, they would have said faster horses.",
         author: "Henry Ford",
     },
+    {
+        content: "君子欲讷于言而敏于行。",
+        author: "《论语·里仁》",
+    },
 ];
