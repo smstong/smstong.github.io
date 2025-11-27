@@ -63,4 +63,8 @@ export const quotes = [
         content: "君子欲讷于言而敏于行。",
         author: "《论语·里仁》",
     },
+    {
+        content: "I'm sorry that I long ago coined the term 'objects' for this topic because it gets many people to focus on the lesser idea.  The big idea is 'messaging'",
+        author: "Alan Kay",
+    },
 ];
