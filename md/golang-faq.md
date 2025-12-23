@@ -224,3 +224,42 @@ http.HandleFunc("/sse", func(w http.ResponseWriter, r *http.Request) {
 		}
 	})
 ```
+# Key points about json.Unmarshal()
+By default,
+- Unknown fields are ignored.
+- Missing fields are not touched.
+```go
+package main
+import (
+	"fmt"
+	"encoding/json"
+)
+
+type Person struct {
+	Id int64	`json:"id"`
+	Name string	`json:"name"`
+	Age int8	`json:"age"`
+	Missing string	`json:"missing"`
+
+}
+func main(){
+	s := `
+	{
+		"id": 2,
+		"name": "Jason",
+		"age": 20,
+		"unknown": "hello"
+	}
+	`
+	p1 := Person{Missing: "default"}
+	
+	if err:=json.Unmarshal([]byte(s), &p1); err != nil {
+		panic(err)
+	}
+	fmt.Printf("%#v\n", p1)
+}
+```
+output
+```
+main.Person{Id:2, Name:"Jason", Age:20, Missing:"default"}
+```
