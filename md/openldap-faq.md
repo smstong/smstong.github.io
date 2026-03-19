@@ -152,3 +152,16 @@ replace: replace all existing values of the modification
            delete the entire attribute if it exists, and it is ignored
            if the attribute does not exist.
 ```
+# How exactaly olcTLSCertificateFile and olcTLSCACertficateFile work?
+***olcTLSCertificateFile*** points the slapd server's server certificate file.
+The file can include intermidiate issuers as well, but it doesn't make any sense.
+
+***olcTLSCACertificateFile*** plays more roles.
+- As a truststore to verify received certs from remote hosts. Such as when slapd as a server to verify client certs, or slapd acting as a client connecting to another slapd to verify remote slapd's server cert.
+- As a truststore to verify chain certs sent out from slapd when slapd acts as a TLS server.
+
+As the first role, the remote hosts' root CAs should be in this file.
+
+As the second role, slapd itself's cert chain and root CA should be in this file.
+
+A common mistake is putting full chain into ***olcTLSCertificateFile***, but the chain certs are not in ***olcTLSCACertificateFile***. Under this circumstance, although slapd can see the intermediate issuer, but does NOT send it to its clients beacuse it's not "trusted" in ***olsTLSCACertificateFile***. (This is different to both Apache and Nginx which use a single file to include full chain and work well.)
