@@ -170,7 +170,7 @@ A common mistake is putting full chain into ***olcTLSCertificateFile***, but the
 External SASL authn is usually used to run admin to change config. e.g.
 ```
 # run as root
-ldapadd -Y EXTERNAL -h ldapi:/// -f xxx.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f xxx.ldif
 ```
 
 SASL External (via Unix socket) detects the running user "root", and maps it to
