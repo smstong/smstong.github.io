@@ -165,3 +165,20 @@ As the first role, the remote hosts' root CAs should be in this file.
 As the second role, slapd itself's cert chain and root CA should be in this file.
 
 A common mistake is putting full chain into ***olcTLSCertificateFile***, but the chain certs are not in ***olcTLSCACertificateFile***. Under this circumstance, although slapd can see the intermediate issuer, but does NOT send it to its clients beacuse it's not "trusted" in ***olsTLSCACertificateFile***. (This is different to both Apache and Nginx which use a single file to include full chain and work well.)
+
+# How SASL EXTERNAL authn works?
+External SASL authn is usually used to run admin to change config. e.g.
+```
+# run as root
+ldapadd -Y EXTERNAL -h ldapi:/// -f xxx.ldif
+```
+
+SASL External (via Unix socket) detects the running user "root", and maps it to
+"gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth".
+
+In ***slapd.d/cn=config/olcDatabase={0}config.ldif***, the above mapped user is granted.
+```
+olcAccess: {0}to * by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external
+ ,cn=auth" manage by * none
+```
+Note: this authn user is not necessary in the directory itself.
