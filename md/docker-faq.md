@@ -116,3 +116,12 @@ default via 182.150.183.1 dev ens160
 182.150.183.0/25 dev ens160 scope link
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 # manully added route for docker0 bridge
 ```
+
+# What's the purpose of "VOLUME" keyword in Dockerfile?
+The volume denoted by "VOLUME" keyword in Dockerfile is to be created by "docker run".
+If no explicit "-v" argument for "docker run", it will create an anonymous volume.
+
+When the container is removed, the anonymous volume still exists, unless "docker run --rm".
+But when you run the same image again, the existing anonymous volume is not reused but a brand new one is creatd by "docker run" again.
+
+To resuse existing anonymous volume, it must be explicitly denoted.
