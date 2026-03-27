@@ -125,3 +125,24 @@ When the container is removed, the anonymous volume still exists, unless "docker
 But when you run the same image again, the existing anonymous volume is not reused but a brand new one is creatd by "docker run" again.
 
 To resuse existing anonymous volume, it must be explicitly denoted.
+
+# Where does Docker save container logs?
+Docker has builtin support for multiple *logging drivers*. The default one is "json-file".
+"json-file" by default has "max-size" equal to "-1", which means unlimited. So eventually, the log file may take over the whole disk and cause issues.
+
+The best practice is using "local" driver which by default rotates the logs. (max-size: 10m, max-file: 5).
+
+- modify /etc/docker/daemon.json
+```
+{
+  "data-root": "/opt/apps/docker",
+  "log-driver": "local",
+  "log-opts": {
+     "max-size": "50m",
+     "max-file": "5"
+  }
+}
+```
+- restart docker engine
+
+More details can be found at https://docs.docker.com/engine/logging/configure/.
