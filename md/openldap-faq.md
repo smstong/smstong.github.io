@@ -182,3 +182,17 @@ olcAccess: {0}to * by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external
  ,cn=auth" manage by * none
 ```
 Note: this authn user is not necessary in the directory itself.
+
+# How to retrieve all entries from Openldap?
+By default, OpenLdap has a "hard limit" of 500 for any search result.
+This is controlled by a parameter *olcSizeLimit*.
+```
+olcSizeLimit: 500
+```
+This limit applies to the total number of returned entries, *** whether paging is enabled or not ***.
+Some times, it's necessary to read all entries from OpenLdap to our app, e.g. Grouper data filed.
+This can be solved by changing the limit value to "unlimited".
+
+```
+olcSizeLimit: unlimited
+```
