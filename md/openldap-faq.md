@@ -196,3 +196,6 @@ This can be solved by changing the limit value to "unlimited".
 ```
 olcSizeLimit: unlimited
 ```
+
+# Why ldapsearch either filter (isgood=TRUE) or (isgood=FALSE) return nothing, but (isgood=*) return entries?
+The reason is the attribute definition of "isgood" doesn't include "EQUALITY".
