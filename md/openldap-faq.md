@@ -197,5 +197,11 @@ This can be solved by changing the limit value to "unlimited".
 olcSizeLimit: unlimited
 ```
 
+# How to filter by if an attribute exists?
+The filter doesn't care the value but only care if such attribute exists.
+```
+(attriuteName=*)
+```
+
 # Why ldapsearch either filter (isgood=TRUE) or (isgood=FALSE) return nothing, but (isgood=*) return entries?
 The reason is the attribute definition of "isgood" doesn't include "EQUALITY".
