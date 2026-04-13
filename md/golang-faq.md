@@ -1,4 +1,29 @@
 **GOLANG FAQ**
+# Why exec.Command.Output() never returns even with a timeout context?
+
+```go
+ctx, cancel := context.WithTimeout(context.Background(), time.Second * 10)
+cmd := exec.CommandContext(ctx, "./demo.sh")
+# cmd.WaitDelay = time.Second * 1
+
+# this never returns
+out, err := cmd.Output()
+```
+demo.sh
+```sh
+#!/bin/bash
+sleep 99999
+```
+
+The reason is ```cmd.Output()``` set stdout of the Command process (in this case a bash process), which eventully creates a pipe in Linux kernel.
+
+After 10 seconds, the bash process was killed, and the "sleep" process became an orphan process adopted by PID 1. This "sleep" process inherits the stdout pipe created by the died bash process. As the pipe is still open, the go routine waits the pipe to close forever...
+
+To solve this problem, Go 1.20 introduced ```Command.WaitDelay```, which forcefully close the pipes so the go routine can returns.
+
+```
+cmd.WaitDelay = time.Second * 1
+```
 
 # What's a module?
 As long as a folder containing a file named "go.mod", it's treated as a module.
