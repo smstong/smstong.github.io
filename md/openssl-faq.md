@@ -1,4 +1,24 @@
 **OpenSSL FAQ**
+# What's a cross signed certificate?
+Cross-signing is a temporary bridge.
+
+This usually happends on new Root CA, (let's name it B).
+B's self-signed Root is not widely trusted yet, so B asks the widely trusted A to sign its Root cert.
+
+So now B has two root certs, cert1 and cert2, that actually share the same public key, same Subject name, ane same Subject Key Id.
+
+- B's cert1, signed by B (self sign)
+- B's cert2, signed by A (cross sign)
+
+Those two certs coexist for a while until cert2 is widely trusted, then cert1 will disapper.
+
+```
+Old world ( trusts Root A)
+            |
+cross sign ( A -> B)
+            |
+New world (trusts Root B directly)
+```
 
 # How to get hash and keyed hash?
 ```bash
